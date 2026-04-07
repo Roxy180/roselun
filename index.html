@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>她舒适——校园女性内衣消费健康调查</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="experienceScreen" class="experience-screen">
+        <div id="heroStage" class="hero-stage">
+          <section class="carousel-card poster-frame" aria-label="品牌图片轮播">
+            <button id="prevSlide" class="ghost-btn" type="button" aria-label="上一张">‹</button>
+            <div id="carouselTrack" class="carousel-track"></div>
+            <button id="nextSlide" class="ghost-btn" type="button" aria-label="下一张">›</button>
+            <div id="carouselDots" class="carousel-dots"></div>
+          </section>
+
+          <header class="hero hero-overlay">
+            <div class="hero-copy">
+              <p class="hero-hello">你好</p>
+              <p class="hero-intro">
+                这里是西北大学·Roselune熹芮<br />
+                一个专注为女性打造<br />
+                「舒适、安心、有温度」<br />
+                的内衣品牌
+              </p>
+              <p class="hero-note">
+                此次问卷仅用于<br />
+                「中国大学生计算机设计大赛」数据研究
+              </p>
+            </div>
+            <p class="scroll-tip">向下滑动，开始填写问卷</p>
+          </header>
+        </div>
+      </section>
+
+      <section id="surveyScreen" class="survey-screen">
+        <div class="progress-wrap">
+          <div class="stage-row">
+            <span>问卷进度</span>
+            <span id="questionCounter">0 / 18 已完成</span>
+          </div>
+          <div class="progress-bar">
+            <div id="progressFill"></div>
+          </div>
+        </div>
+
+        <section id="questionsContainer" class="questions-list"></section>
+
+        <footer class="survey-footer">
+          <p class="privacy-inline">全程匿名，感谢您的帮助</p>
+          <button id="submitBtn" class="primary-btn submit-btn" type="button">提交问卷</button>
+        </footer>
+      </section>
+
+      <section id="doneScreen" class="screen done-screen">
+        <div class="done-card">
+          <h2>感谢你完成调研～ 🎁</h2>
+          <p>熹芮致力于为校园女生提供舒适、隐私、高性价比的内衣选择。</p>
+          <p>愿你每天都自在、轻松、开心。</p>
+          <p class="success-text">已成功提交（匿名）</p>
+          <button id="restartBtn" class="secondary-btn" type="button">再看一遍</button>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <p class="footer-title">Roselune 熹芮</p>
+        <div class="footer-grid">
+          <section class="footer-col">
+            <p class="footer-col-title">官方渠道</p>
+            <a
+              class="footer-link"
+              href="https://a202008132321181960211508.wecatalog.cn/weshop/store/A202008132321181960211508?overseas=0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="footer-icon">🛍️</span>
+              <span>官方店铺</span>
+            </a>
+            <a
+              class="footer-link"
+              href="https://xhslink.com/m/6r5i9px3BRR"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="footer-icon">📕</span>
+              <span>小红书账号</span>
+            </a>
+            <button id="wechatBtn" class="footer-link footer-link-btn" type="button">
+              <span class="footer-icon">💬</span>
+              <span>官方微信二维码</span>
+            </button>
+          </section>
+
+          <section class="footer-col">
+            <p class="footer-col-title">服务支持</p>
+            <button id="aboutBtn" class="footer-link footer-link-btn" type="button">
+              <span class="footer-icon">ℹ️</span>
+              <span>关于我们</span>
+            </button>
+            <button id="policyBtn" class="footer-link footer-link-btn" type="button">
+              <span class="footer-icon">📜</span>
+              <span>售后政策</span>
+            </button>
+            <button id="bizBtn" class="footer-link footer-link-btn" type="button">
+              <span class="footer-icon">✉️</span>
+              <span>商务合作</span>
+            </button>
+          </section>
+        </div>
+      </footer>
+    </main>
+
+    <div id="wechatModal" class="wechat-modal" aria-hidden="true">
+      <div class="wechat-panel">
+        <button id="wechatCloseBtn" class="wechat-close" type="button" aria-label="关闭">×</button>
+        <h3>官方微信二维码</h3>
+        <img
+          id="wechatQrImage"
+          class="wechat-qr"
+          src="imgs/material/myself/IMG_7530.jpg"
+          alt="官方微信二维码"
+        />
+        <p id="wechatQrTip" class="wechat-tip">请检查图片路径：imgs/material/myself/IMG_7530.jpg</p>
+        <div class="wechat-actions">
+          <button id="copyWechatIdBtn" class="wechat-action-btn" type="button" data-wechat-id="ventusdedian">
+            点击复制微信号：ventusdedian
+          </button>
+          <a id="downloadQrBtn" class="wechat-action-btn secondary" href="imgs/material/myself/IMG_7530.jpg" download="Roselune-官方微信二维码.jpg">
+            保存二维码到相册
+          </a>
+          <p id="wechatActionStatus" class="wechat-tip action-status"></p>
+        </div>
+      </div>
+    </div>
+    <div id="aboutModal" class="wechat-modal about-modal" aria-hidden="true">
+      <div class="wechat-panel about-panel">
+        <button id="aboutCloseBtn" class="wechat-close" type="button" aria-label="关闭">×</button>
+        <h3>关于我们</h3>
+        <img id="aboutImage" class="wechat-qr" src="imgs/material/about/品牌介绍.png" alt="关于我们" />
+        <p id="aboutTip" class="wechat-tip">请检查图片路径：imgs/material/about/品牌介绍.png</p>
+      </div>
+    </div>
+    <div id="policyModal" class="wechat-modal policy-modal" aria-hidden="true">
+      <div class="wechat-panel policy-panel">
+        <button id="policyCloseBtn" class="wechat-close" type="button" aria-label="关闭">×</button>
+        <h3>售后政策</h3>
+        <img id="policyImage" class="wechat-qr" src="imgs/material/myself/首页LOGO概念.png" alt="售后政策" />
+        <p id="policyTip" class="wechat-tip">请检查图片路径：imgs/material/myself/首页LOGO概念.png</p>
+      </div>
+    </div>
+    <div id="bizModal" class="wechat-modal biz-modal" aria-hidden="true">
+      <div class="wechat-panel biz-panel">
+        <button id="bizCloseBtn" class="wechat-close" type="button" aria-label="关闭">×</button>
+        <h3>商务合作</h3>
+        <img id="bizImage" class="wechat-qr" src="imgs/material/us/方条slogan.png" alt="商务合作" />
+        <p id="bizTip" class="wechat-tip">请检查图片路径：imgs/material/us/方条slogan.png</p>
+        <div class="wechat-actions">
+          <button id="copyBizEmailBtn" class="wechat-action-btn" type="button" data-biz-email="2429026050@qq.com">
+            点击复制邮箱：2429026050@qq.com
+          </button>
+          <p id="bizActionStatus" class="wechat-tip action-status"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
