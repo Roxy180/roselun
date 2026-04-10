@@ -1,5 +1,11 @@
+const CDN_BASE = "https://cdn.jsdelivr.net/gh/Roxy180/roselun@main";
+
 const slides = [
-  { text: "柔和贴合，像日常生活里的一层安心。", image: "imgs/未标题-1.jpg" },
+  {
+    text: "柔和贴合，像日常生活里的一层安心。",
+    image: `${CDN_BASE}/assets/optimized/hero.jpg`,
+    fallbackImage: "assets/optimized/hero.jpg",
+  },
 ];
 
 const questions = [
@@ -67,12 +73,12 @@ const questions = [
     options: ["纯棉", "莫代尔", "桑蚕丝", "蕾丝", "莱卡（优质氨纶）", "锦纶", "其他"],
     style: "material",
     imageFiles: [
-      "imgs/material/cotton.png",
-      "imgs/material/modal.png",
-      "imgs/material/silk.png",
-      "imgs/material/lace.png",
-      "imgs/material/lycra.png",
-      "imgs/material/nylon.png",
+      "cotton.png",
+      "modal.png",
+      "silk.png",
+      "lace.png",
+      "lycra.png",
+      "nylon.png",
       "",
     ],
     maxSelect: 3,
@@ -225,11 +231,31 @@ function renderSlide() {
   const slide = slides[state.currentSlide];
   el.track.innerHTML = `
     <div class="carousel-item">
-      <img src="${slide.image}" alt="${slide.text}" loading="lazy" />
+      <img
+        src="${slide.image}"
+        alt="${slide.text}"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        data-fallback-src="${slide.fallbackImage || ""}"
+      />
       <div class="carousel-overlay"></div>
       <p>${slide.text}</p>
     </div>
   `;
+  const slideImage = el.track.querySelector("img[data-fallback-src]");
+  if (slideImage) {
+    slideImage.addEventListener(
+      "error",
+      () => {
+        const fallbackSrc = slideImage.getAttribute("data-fallback-src");
+        if (fallbackSrc && slideImage.getAttribute("src") !== fallbackSrc) {
+          slideImage.setAttribute("src", fallbackSrc);
+        }
+      },
+      { once: true }
+    );
+  }
   if (slides.length <= 1) {
     el.prevSlide.style.display = "none";
     el.nextSlide.style.display = "none";
@@ -476,6 +502,20 @@ function updateHeroOnScroll() {
 }
 
 function openModal(modal) {
+  const modalImage = modal.querySelector("img[data-src]");
+  if (modalImage && !modalImage.getAttribute("src")) {
+    modalImage.setAttribute("src", modalImage.getAttribute("data-src"));
+    modalImage.addEventListener(
+      "error",
+      () => {
+        const fallbackSrc = modalImage.getAttribute("data-fallback-src");
+        if (fallbackSrc && modalImage.getAttribute("src") !== fallbackSrc) {
+          modalImage.setAttribute("src", fallbackSrc);
+        }
+      },
+      { once: true }
+    );
+  }
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
 }
